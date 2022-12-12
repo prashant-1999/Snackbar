@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { Stack, Alert, AlertTitle, Snackbar } from "@mui/material";
+import { useState } from "react";
+import "./App.css";
+// import SnackBar from "./components/SnackBar";
 
 function App() {
+  // const alert = () => {
+  //   console.log("alert");
+  //   // return (
+  //   //   <Alert variant="success">
+  //   //     <AlertTitle>Successful</AlertTitle>
+  //   //     Registration Successful !!!!
+  //   //   </Alert>
+  //   // );
+  // };
+  //  const navigate = useNavigate('');
+  const [open, setOpen] = useState(false);
+  const handleClose = (e, reason) => {
+    if (reason == "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+  const message = "registration successfully!!!!";
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <button onClick={<Alert/>}>Alert</button>
+      <Stack spacing={2}>
+        <Alert variant="filled" severity="error" onClose={()=>{alert("yo")}}>
+          {/* <AlertTitle>Successful</AlertTitle> */}
+      {/* Registration Successful !!!! */}
+      {/* </Alert>
+      </Stack> */}
+
+      <button onClick={() => setOpen(true)}>Register</button>
+      <Snackbar
+        message={message}
+        autoHideDuration={4000}
+        open={open}
+        onClose={handleClose}
+      />
+    </>
   );
 }
 
